@@ -6,12 +6,14 @@ class FilterController:
     def filter_data(
             self,
             character1="すべて",
-            character2="指定なし",
+            character2="",
             operation="すべて",
             movetype="すべて",
             command="すべて",
+            command2="指定なし",
             cancel="すべて",
             startup=None,
+            startup2=None,
             hitF=None,
             guardF=None,
             zokusei="すべて"):
@@ -39,12 +41,24 @@ class FilterController:
             result = result[result["技タイプ"] == movetype]
 
         if command != "すべて":
-            result = result[result["コマンド"] == command]
 
+            command_list = []
+            if command != "指定なし":
+                command_list.append(command)
+
+            if command2 != "指定なし":
+                if command2 not in command_list:
+                    command_list.append(command2)
+
+            result = result[result["コマンド"].isin(command_list)]
+        
         if cancel != "すべて":
             result = result[result["キャンセル"] == cancel]
 
         if startup is not None:
+            result = result["発生"]
+        
+        if startup2 is not None:
             result = result["発生"]
 
         if hitF is not None:
