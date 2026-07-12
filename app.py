@@ -29,18 +29,13 @@ st.set_page_config(
 # キャラクター選択
 ###################################################
 
-col1, col2 = st.columns(2)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
 
     character = st.selectbox(
         "キャラクター",
         controller.get_character1_list()
-    )
-
-    character2 = st.selectbox(
-        "キャラクター(比較用)",
-        controller.get_character2_list()
     )
 
     operation = st.selectbox(
@@ -53,6 +48,8 @@ with col1:
         controller.get_movetype_type_list()
     )
 
+with col2:
+
     cancel = st.selectbox(
         "キャンセル",
         controller.get_cancel_list()
@@ -63,15 +60,11 @@ with col1:
         controller.get_zokusei_list()
     )
 
-
-with col2:
-
     command = st.selectbox(
         "コマンド",
         controller.get_command_list()
     )
-
-
+with col3:
     startup = st.text_input(
         "発生(数値入力)",
         value=""
@@ -99,6 +92,30 @@ with col2:
     if guardF == "":
         guardF = None
 
+
+
+with col4:
+
+    character2 = st.selectbox(
+        "キャラクター(比較用)",
+        controller.get_character2_list()
+    )
+
+    command2 = st.selectbox(
+        "コマンド(比較用)",
+        controller.get_command2_list()
+    )
+
+    startup2 = st.text_input(
+        "発生(数値入力)(比較用)",
+        value=""
+    )
+
+    startup2 = startup2.strip()
+    if startup2 == "":
+        startup2 = None
+
+
 ###################################################
 # 検索ボタン
 ###################################################
@@ -109,9 +126,11 @@ if st.button("検索"):
         operation=operation,
         movetype=movetype,
         command=command,
+        command2=command2,
         cancel=cancel,
         zokusei=zokusei,
         startup=startup,
+        startup2=startup2,
         hitF=hitF,
         guardF=guardF
     )
