@@ -151,18 +151,11 @@ if search:
 
 if clear:
 
-    st.session_state.character = "すべて"
-    st.session_state.character2 = "指定なし"
+    result = st.session_state.result
 
-    st.session_state.operation = "すべて"
-    st.session_state.movetype = "すべて"
-    st.session_state.command = "すべて"
-    st.session_state.cancel = "すべて"
-    st.session_state.zokusei = "すべて"
+    st.session_state.clear()
 
-    st.session_state.startup = ""
-    st.session_state.hitF = ""
-    st.session_state.guardF = ""
+    st.session_state.result = result
 
     st.rerun()
 
