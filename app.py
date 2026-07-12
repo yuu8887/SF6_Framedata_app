@@ -123,13 +123,12 @@ with col4:
 ###################################################
 # 検索ボタン
 ###################################################
-col1, col2 = st.columns(2)
+col1 = st.columns(1)
 
 with col1:
     search = st.button("検索")
 
-with col2:
-    clear = st.button("クリア")
+
 
 if "result" not in st.session_state:
     st.session_state.result = df
@@ -149,15 +148,7 @@ if search:
         guardF=guardF
     )
 
-if clear:
 
-    result = st.session_state.result
-
-    st.session_state.clear()
-
-    st.session_state.result = result
-
-    st.rerun()
 
 ###################################################
 # 表示
@@ -169,6 +160,13 @@ display_df = display_df.fillna("")
 
 display_df = display_df.astype(str)
 
+display_df = display_df.rename(columns={
+    "D増加量(ヒット)": "D増加量\n(ヒット)",
+    "D増加量(ガード)": "D増加量\n(ガード)",
+    "D増加量(パニカン)": "D増加量\n(パニカン)",
+    "ヒット時硬直差": "ヒット時\n硬直差",
+    "ガード時硬直差": "ガード時\n硬直差",
+})
 
 st.dataframe(
     display_df,
