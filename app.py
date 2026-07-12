@@ -20,72 +20,84 @@ controller = FilterController(df)
 ###################################################
 st.title("SF6 フレームデータビューワー")
 
+st.set_page_config(
+    page_title="SF6 フレームデータビューワー",
+    layout="wide"
+)
+
 ###################################################
 # キャラクター選択
 ###################################################
 
-character = st.selectbox(
-    "キャラクター",
-    controller.get_character1_list()
-)
+col1, col2 = st.columns(2)
 
-character2 = st.selectbox(
-    "キャラクター(比較用)",
-    controller.get_character2_list()
-)
+with col1:
 
-operation = st.selectbox(
-    "操作タイプ",
-    controller.get_operation_type_list()
-)
+    character = st.selectbox(
+        "キャラクター",
+        controller.get_character1_list()
+    )
 
-movetype = st.selectbox(
-    "技タイプ",
-    controller.get_movetype_type_list()
-)
+    character2 = st.selectbox(
+        "キャラクター(比較用)",
+        controller.get_character2_list()
+    )
 
-command = st.selectbox(
-    "コマンド",
-    controller.get_command_list()
-)
+    operation = st.selectbox(
+        "操作タイプ",
+        controller.get_operation_type_list()
+    )
 
-cancel = st.selectbox(
-    "キャンセル",
-    controller.get_cancel_list()
-)
+    movetype = st.selectbox(
+        "技タイプ",
+        controller.get_movetype_type_list()
+    )
 
-zokusei = st.selectbox(
-    "属性",
-    controller.get_zokusei_list()
-)
+    cancel = st.selectbox(
+        "キャンセル",
+        controller.get_cancel_list()
+    )
+
+    zokusei = st.selectbox(
+        "属性",
+        controller.get_zokusei_list()
+    )
 
 
-startup = st.text_input(
-    "発生(数値入力)",
-    value=""
-)
+with col2:
 
-startup = startup.strip()
-if startup == "":
-    startup = None
+    command = st.selectbox(
+        "コマンド",
+        controller.get_command_list()
+    )
 
-hitF = st.text_input(
-    "ヒット時硬直差(数値入力)",
-    value=""
-)
 
-hitF = hitF.strip()
-if hitF == "":
-    hitF = None
+    startup = st.text_input(
+        "発生(数値入力)",
+        value=""
+    )
 
-guardF = st.text_input(
-    "ガード時硬直差(数値入力)",
-    value=""
-)
+    startup = startup.strip()
+    if startup == "":
+        startup = None
 
-guardF = guardF.strip()
-if guardF == "":
-    guardF = None
+    hitF = st.text_input(
+        "ヒット時硬直差(数値入力)",
+        value=""
+    )
+
+    hitF = hitF.strip()
+    if hitF == "":
+        hitF = None
+
+    guardF = st.text_input(
+        "ガード時硬直差(数値入力)",
+        value=""
+    )
+
+    guardF = guardF.strip()
+    if guardF == "":
+        guardF = None
 
 ###################################################
 # 検索ボタン
@@ -122,6 +134,3 @@ st.dataframe(
     display_df,
     width="stretch"
 )
-
-
-st.write(df.dtypes)
