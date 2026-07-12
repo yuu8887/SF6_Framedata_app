@@ -36,18 +36,18 @@ with col1:
     character = st.selectbox(
         "キャラクター",
         controller.get_character1_list(),
-        key="character"
+ #       key="character"
     )
 
     character2 = st.selectbox(
         "キャラクター(比較用)",
         controller.get_character2_list(),
-        key="character2"
+#        key="character2"
     )
     operation = st.selectbox(
         "操作タイプ",
         controller.get_operation_type_list(),
-        key="operation"
+#        key="operation"
     )
 
 
@@ -56,19 +56,19 @@ with col2:
     movetype = st.selectbox(
         "技タイプ",
         controller.get_movetype_type_list(),
-        key="movetype"
+#        key="movetype"
     )
 
     cancel = st.selectbox(
         "キャンセル",
         controller.get_cancel_list(),
-        
+#        key="cancel"        
     )
 
     zokusei = st.selectbox(
         "属性",
         controller.get_zokusei_list(),
-        key="zokusei"
+#        key="zokusei"
     )
 
 
@@ -77,20 +77,20 @@ with col3:
     command = st.selectbox(
         "コマンド",
         controller.get_command_list(),
-        key="command"
+#        key="command"
     )
 
     command2 = st.selectbox(
         "コマンド(比較用)",
         controller.get_command2_list(),
-        key="command2"
+#        key="command2"
     )
 
 with col4:
     startup = st.text_input(
         "発生(数値入力)",
         value="",
-        key="startup"
+#        key="startup"
     )
 
     startup = startup.strip()
@@ -101,7 +101,7 @@ with col4:
     hitF = st.text_input(
         "ヒット時硬直差(数値入力)",
         value="",
-        key="hitF"
+#        key="hitF"
     )
 
     hitF = hitF.strip()
@@ -112,7 +112,7 @@ with col4:
     guardF = st.text_input(
         "ガード時硬直差(数値入力)",
         value="",
-        key="guardF"
+#        key="guardF"
     )
 
     guardF = guardF.strip()
