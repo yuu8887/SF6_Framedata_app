@@ -65,15 +65,27 @@ startup = st.text_input(
     value=""
 )
 
+startup = startup.strip()
+if startup == "":
+    startup = None
+
 hitF = st.text_input(
     "ヒット時硬直差(数値入力)",
     value=""
 )
 
+shitF = hitF.strip()
+if hitF == "":
+    hitF = None
+
 guardF = st.text_input(
     "ガード時硬直差(数値入力)",
     value=""
 )
+
+guardF = guardF.strip()
+if guardF == "":
+    guardF = None
 
 ###################################################
 # 検索ボタン
