@@ -29,13 +29,44 @@ character = st.selectbox(
     controller.get_character1_list()
 )
 
+character2 = st.selectbox(
+    "キャラクター(比較用)",
+    controller.get_character2_list()
+)
+
+operation = st.selectbox(
+    "操作タイプ",
+    controller.get_operation_type_list()
+)
+
+movetype = st.selectbox(
+    "技タイプ",
+    controller.get_movetype_type_list()
+)
+
+command = st.selectbox(
+    "コマンド",
+    controller.get_command_list()
+)
+
+cancel = st.selectbox(
+    "コマンド",
+    controller.get_cancel_list()
+)
+
 
 ###################################################
 # 検索ボタン
 ###################################################
 if st.button("検索"):
     result = controller.filter_data(
-        character1=character
+        character1=character,
+        character2=character2,
+        operation=operation,
+        movetype=movetype,
+        command=command,
+        cancel=cancel,
+
     )
 else:
 
