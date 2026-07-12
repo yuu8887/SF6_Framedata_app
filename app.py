@@ -87,7 +87,7 @@ if st.button("検索"):
         command=command,
         cancel=cancel,
         zokusei=zokusei,
-#        startup=startup,
+        startup=startup,
         hitF=hitF,
         guardF=guardF
     )
