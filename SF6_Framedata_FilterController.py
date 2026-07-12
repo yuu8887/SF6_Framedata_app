@@ -13,7 +13,6 @@ class FilterController:
             command2="指定なし",
             cancel="すべて",
             startup=None,
-            startup2=None,
             hitF=None,
             guardF=None,
             zokusei="すべて"):
@@ -55,20 +54,12 @@ class FilterController:
         if cancel != "すべて":
             result = result[result["キャンセル"] == cancel]
 
-        startup_list = []
-
         if startup is not None:
-                startup_list.append(startup)
-
-        if startup2 is not None:
-                startup_list.append(startup2)
-
-        if startup_list:
 
             temp = result["発生"].astype(str)
             temp = temp.str.replace(".0", "", regex=False)
 
-            result = result[temp.isin(startup_list)]
+            result = result[temp == startup]
 
         if hitF is not None:
 
@@ -168,19 +159,6 @@ class FilterController:
         startup_list.insert(0, "すべて")
 
         return startup_list
-
-    def get_startup2_list(self):
-
-        startup_list = sorted(
-            self.df["発生"].dropna().astype(str).unique().tolist()
-        )
-
-        startup_list.insert(0, "指定なし")
-
-        return startup_list
-
-
-
 
 
     def get_hitF_list(self):
