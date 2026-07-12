@@ -15,7 +15,7 @@ class FilterController:
             hitF=None,
             guardF=None,
             zokusei="すべて"):
-
+        
         result = self.df.copy()
 
         if character1 != "すべて":
