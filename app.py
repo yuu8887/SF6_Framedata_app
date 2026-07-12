@@ -111,4 +111,7 @@ else:
 # 表示
 ###################################################
 
-st.write(result)
+st.dataframe(
+    result.astype(str),
+    width="stretch"
+)
