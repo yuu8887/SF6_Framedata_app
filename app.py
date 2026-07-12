@@ -20,8 +20,6 @@ controller = FilterController(df)
 ###################################################
 st.subheader("SF6 フレームデータビューワー")
 
-st.subheader("使い方")
-
 with st.expander("📖 使い方を表示"):
 
     st.markdown("""
