@@ -50,10 +50,14 @@ class FilterController:
             result = result[temp == startup]
 
         if hitF is not None:
-            result = result[result["ヒット時硬直差"].astype(str) == hitF]
+            temp = result["ヒット時硬直差"].astype(str)
+            temp = temp.str.replace(".0", "", regex=False)
+            result = result[temp == hitF]
 
         if guardF is not None:
-            result = result[result["ガード時硬直差"].astype(str) == guardF]
+            temp = result["ガード時硬直差"].astype(str)
+            temp = temp.str.replace(".0", "", regex=False)
+            result = result[temp == guardF]
 
         if zokusei != "すべて":
             result = result[result["属性"] == zokusei]
