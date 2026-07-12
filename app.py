@@ -74,7 +74,7 @@ hitF = st.text_input(
     value=""
 )
 
-shitF = hitF.strip()
+hitF = hitF.strip()
 if hitF == "":
     hitF = None
 
