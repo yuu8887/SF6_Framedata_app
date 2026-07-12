@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 
 from SF6_Framedata_ExcelDataManager import ExcelDataManager
 from SF6_Framedata_FilterController import FilterController
@@ -10,9 +9,9 @@ from SF6_Framedata_FilterController import FilterController
 # データ読み込み
 ###################################################
 
-pd = ExcelDataManager("SF6_FrameData.xlsx")
+manager = ExcelDataManager("SF6_FrameData.xlsx")
 
-df = pd.load_data()
+df = manager.get_dataframe()
 
 controller = FilterController(df)
 
