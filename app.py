@@ -168,6 +168,11 @@ display_df = display_df.rename(columns={
 st.dataframe(
     display_df,
     width="stretch"
+        column_config={
+        "備考": st.column_config.TextColumn(
+            width="large"
+        ),
+    }
 )
 
 st.write(f"検索結果：{len(st.session_state.result)}件")
