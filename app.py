@@ -59,10 +59,11 @@ zokusei = st.selectbox(
     controller.get_zokusei_list()
 )
 
-startup = st.text_input(
-    "発生",
-    controller.get_startup_list()
-)
+
+#startup = st.text_input(
+#    "発生",
+#    controller.get_startup_list()
+#)
 
 hitF = st.text_input(
     "ヒット時硬直差",
@@ -86,7 +87,7 @@ if st.button("検索"):
         command=command,
         cancel=cancel,
         zokusei=zokusei,
-        startup=startup,
+#        startup=startup,
         hitF=hitF,
         guardF=guardF
     )
