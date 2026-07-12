@@ -123,11 +123,8 @@ with col4:
 ###################################################
 # 検索ボタン
 ###################################################
-col1 = st.columns(1)
 
-with col1:
-    search = st.button("検索")
-
+search = st.button("検索")
 
 
 if "result" not in st.session_state:
