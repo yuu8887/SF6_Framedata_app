@@ -76,13 +76,13 @@ with col3:
 
     command = st.selectbox(
         "コマンド",
-        controller.get_command_list()
-        
+        controller.get_command_list(),
+        key="command"
     )
 
     command2 = st.selectbox(
         "コマンド(比較用)",
-        controller.get_command2_list()
+        controller.get_command2_list(),
         key="command2"
     )
 
