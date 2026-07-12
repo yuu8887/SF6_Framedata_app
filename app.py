@@ -118,7 +118,4 @@ display_df = display_df.fillna("")
 display_df = display_df.astype(str)
 
 
-st.dataframe(
-    display_df,
-    width="stretch"
-)
+st.write(result)
