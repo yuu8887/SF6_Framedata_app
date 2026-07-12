@@ -60,10 +60,10 @@ zokusei = st.selectbox(
 )
 
 
-#startup = st.text_input(
-#    "発生",
-#    controller.get_startup_list()
-#)
+startup = st.text_input(
+    "発生",
+    controller.get_startup_list()
+)
 
 hitF = st.text_input(
     "ヒット時硬直差",
