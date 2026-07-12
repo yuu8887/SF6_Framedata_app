@@ -111,6 +111,6 @@ else:
 # 表示
 ###################################################
 st.dataframe(
-    result,
-    use_container_width=True
+    result.astype(str),
+    width="stretch"
 )
