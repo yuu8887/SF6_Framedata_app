@@ -108,6 +108,16 @@ class FilterController:
 
         return command_list
     
+    def get_command2_list(self):
+
+        command_list = sorted(
+            self.df["コマンド(比較用)"].dropna().unique().tolist()
+        )
+
+        command_list.insert(0, "指定なし")
+
+        return command_list
+
     def get_cancel_list(self):
 
         cancel_list = sorted(
@@ -127,7 +137,21 @@ class FilterController:
         startup_list.insert(0, "すべて")
 
         return startup_list
-    
+
+    def get_startup2_list(self):
+
+        startup_list = sorted(
+            self.df["発生(数値入力)(比較用)"].dropna().astype(str).unique().tolist()
+        )
+
+        startup_list.insert(0, "すべて")
+
+        return startup_list
+
+
+
+
+
     def get_hitF_list(self):
 
         hitF_list = sorted(
