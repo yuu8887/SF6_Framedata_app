@@ -50,7 +50,7 @@ command = st.selectbox(
 )
 
 cancel = st.selectbox(
-    "コマンド",
+    "キャンセル",
     controller.get_cancel_list()
 )
 
