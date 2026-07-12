@@ -131,8 +131,11 @@ with col1:
 with col2:
     clear = st.button("クリア")
 
+if "result" not in st.session_state:
+    st.session_state.result = df
+
 if search:
-    result = controller.filter_data(
+    st.session_state.result = controller.filter_data(
         character1=character,
         character2=character2,
         operation=operation,
@@ -145,9 +148,6 @@ if search:
         hitF=hitF,
         guardF=guardF
     )
-else:
-
-    result = df
 
 if clear:
 
@@ -170,7 +170,7 @@ if clear:
 # 表示
 ###################################################
 
-display_df = result.copy()
+display_df = st.session_state.result.copy()
 
 display_df = display_df.fillna("")
 
@@ -182,4 +182,4 @@ st.dataframe(
     width="stretch"
 )
 
-st.write(f"検索結果：{len(result)}件")
+st.write(f"検索結果：{len(st.session_state.result)}件")
