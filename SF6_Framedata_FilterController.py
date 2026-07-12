@@ -45,19 +45,13 @@ class FilterController:
             result = result[result["キャンセル"] == cancel]
 
         if startup is not None:
-            temp = result["発生"].astype(str)
-            temp = temp.str.replace(".0", "", regex=False)
-            result = result[temp == startup]
+            result = result["発生"]
 
         if hitF is not None:
-            temp = result["ヒット時硬直差"].astype(str)
-            temp = temp.str.replace(".0", "", regex=False)
-            result = result[temp == hitF]
+            result = result["ヒット時硬直差"]
 
         if guardF is not None:
-            temp = result["ガード時硬直差"].astype(str)
-            temp = temp.str.replace(".0", "", regex=False)
-            result = result[temp == guardF]
+            result = result["ガード時硬直差"]
 
         if zokusei != "すべて":
             result = result[result["属性"] == zokusei]
