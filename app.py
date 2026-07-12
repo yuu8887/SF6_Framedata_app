@@ -111,7 +111,14 @@ else:
 # 表示
 ###################################################
 
+display_df = result.copy()
+
+display_df = display_df.fillna("")
+
+display_df = display_df.astype(str)
+
+
 st.dataframe(
-    result.astype(str),
+    display_df,
     width="stretch"
 )
