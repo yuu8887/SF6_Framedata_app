@@ -1,11 +1,50 @@
 import streamlit as st
 
 from SF6_Framedata_ExcelDataManager import ExcelDataManager
+from SF6_Framedata_FilterController import FilterController
 
-st.title("SF6 フレームデータ検索")
 
-excel = ExcelDataManager("SF6_FrameData.xlsx")
 
-df = excel.get_dataframe()
+###################################################
+# データ読み込み
+###################################################
 
-st.dataframe(df)
+manager = ExcelDataManager("SF6_FrameData.xlsx")
+
+df = manager.load_data()
+
+controller = FilterController(df)
+
+###################################################
+# タイトル
+###################################################
+st.title("SF6 フレームデータビューワー")
+
+###################################################
+# キャラクター選択
+###################################################
+
+character = st.selectbox(
+    "キャラクター",
+    controller.get_character1_list()
+)
+
+
+###################################################
+# 検索ボタン
+###################################################
+if st.button("検索"):
+    result = controller.filter_data(
+        character1=character
+    )
+else:
+
+    result = df
+
+###################################################
+# 表示
+###################################################
+st.dataframe(
+    result,
+    use_container_width=True
+)
