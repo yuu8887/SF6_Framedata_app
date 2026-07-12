@@ -59,7 +59,6 @@ zokusei = st.selectbox(
     controller.get_zokusei_list()
 )
 
-
 startup = st.text_input(
     "発生",
     controller.get_startup_list()
