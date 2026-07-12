@@ -35,57 +35,84 @@ with col1:
 
     character = st.selectbox(
         "キャラクター",
-        controller.get_character1_list()
+        controller.get_character1_list(),
+        key="character"
     )
 
+    character2 = st.selectbox(
+        "キャラクター(比較用)",
+        controller.get_character2_list(),
+        key="character2"
+    )
     operation = st.selectbox(
         "操作タイプ",
-        controller.get_operation_type_list()
+        controller.get_operation_type_list(),
+        key="operation"
     )
 
-    movetype = st.selectbox(
-        "技タイプ",
-        controller.get_movetype_type_list()
-    )
 
 with col2:
 
+    movetype = st.selectbox(
+        "技タイプ",
+        controller.get_movetype_type_list(),
+        key="movetype"
+    )
+
     cancel = st.selectbox(
         "キャンセル",
-        controller.get_cancel_list()
+        controller.get_cancel_list(),
+        
     )
 
     zokusei = st.selectbox(
         "属性",
-        controller.get_zokusei_list()
+        controller.get__list()
+        key="zokusei"
     )
+
+
+with col3:
 
     command = st.selectbox(
         "コマンド",
         controller.get_command_list()
+        
     )
-with col3:
+
+    command2 = st.selectbox(
+        "コマンド(比較用)",
+        controller.get_command2_list()
+        key="command2"
+    )
+
+with col4:
     startup = st.text_input(
         "発生(数値入力)",
-        value=""
+        value="",
+        key="startup"
     )
 
     startup = startup.strip()
     if startup == "":
         startup = None
 
+
     hitF = st.text_input(
         "ヒット時硬直差(数値入力)",
-        value=""
+        value="",
+        key="hitF"
     )
 
     hitF = hitF.strip()
     if hitF == "":
         hitF = None
 
+
     guardF = st.text_input(
         "ガード時硬直差(数値入力)",
-        value=""
+        value="",
+        key="guardF"
     )
 
     guardF = guardF.strip()
@@ -93,32 +120,17 @@ with col3:
         guardF = None
 
 
-
-with col4:
-
-    character2 = st.selectbox(
-        "キャラクター(比較用)",
-        controller.get_character2_list()
-    )
-
-    command2 = st.selectbox(
-        "コマンド(比較用)",
-        controller.get_command2_list()
-    )
-
-    startup2 = st.text_input(
-        "発生(数値入力)(比較用)",
-        value=""
-    )
-
-    startup2 = startup2.strip()
-    if startup2 == "":
-        startup2 = None
-
-
 ###################################################
 # 検索ボタン
 ###################################################
+col1, col2 = st.columns(2)
+
+with col1:
+    search = st.button("検索")
+
+with col2:
+    clear = st.button("クリア")
+
 if st.button("検索"):
     result = controller.filter_data(
         character1=character,
@@ -130,13 +142,29 @@ if st.button("検索"):
         cancel=cancel,
         zokusei=zokusei,
         startup=startup,
-        startup2=startup2,
         hitF=hitF,
         guardF=guardF
     )
 else:
 
     result = df
+
+if clear:
+
+    st.session_state.character = "すべて"
+    st.session_state.character2 = "指定なし"
+
+    st.session_state.operation = "すべて"
+    st.session_state.movetype = "すべて"
+    st.session_state.command = "すべて"
+    st.session_state.cancel = "すべて"
+    st.session_state.zokusei = "すべて"
+
+    st.session_state.startup = ""
+    st.session_state.hitF = ""
+    st.session_state.guardF = ""
+
+    st.rerun()
 
 ###################################################
 # 表示
@@ -153,3 +181,5 @@ st.dataframe(
     display_df,
     width="stretch"
 )
+
+st.write(f"検索結果：{len(result)}件")
