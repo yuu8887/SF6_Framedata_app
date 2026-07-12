@@ -121,7 +121,7 @@ class FilterController:
     def get_startup_list(self):
 
         startup_list = sorted(
-            self.df["発生"].dropna().unique().tolist()
+            self.df["発生"].dropna().unique().astype(str).unique().tolist()
         )
 
         startup_list.insert(0, "すべて")
@@ -131,7 +131,7 @@ class FilterController:
     def get_hitF_list(self):
 
         hitF_list = sorted(
-            self.df["ヒット時硬直差"].dropna().unique().tolist()
+            self.df["ヒット時硬直差"].dropna().astype(str).unique().tolist()
         )
 
         hitF_list.insert(0, "すべて")
@@ -141,7 +141,7 @@ class FilterController:
     def get_guardF_list(self):
 
         guardF_list = sorted(
-            self.df["ガード時硬直差"].dropna().unique().tolist()
+            self.df["ガード時硬直差"].dropna().astype(str).unique().tolist()
         )
 
         guardF_list.insert(0, "すべて")
