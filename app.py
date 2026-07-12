@@ -67,7 +67,7 @@ with col2:
 
     zokusei = st.selectbox(
         "属性",
-        controller.get__list(),
+        controller.get_zokusei_list(),
         key="zokusei"
     )
 
