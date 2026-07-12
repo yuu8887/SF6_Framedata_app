@@ -121,7 +121,7 @@ class FilterController:
     def get_startup_list(self):
 
         startup_list = sorted(
-            self.df["発生"].dropna().unique().astype(str).unique().tolist()
+            self.df["発生"].dropna().astype(str).unique().tolist()
         )
 
         startup_list.insert(0, "すべて")
