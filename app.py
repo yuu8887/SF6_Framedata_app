@@ -61,18 +61,18 @@ zokusei = st.selectbox(
 
 
 startup = st.text_input(
-    "発生",
-    controller.get_startup_list()
+    "発生(数値入力)",
+    value=""
 )
 
 hitF = st.text_input(
-    "ヒット時硬直差",
-    controller.get_hitF_list()
+    "ヒット時硬直差(数値入力)",
+    value=""
 )
 
 guardF = st.text_input(
-    "ガード時硬直差",
-    controller.get_guardF_list()
+    "ガード時硬直差(数値入力)",
+    value=""
 )
 
 ###################################################
