@@ -4,7 +4,6 @@ from SF6_Framedata_ExcelDataManager import ExcelDataManager
 from SF6_Framedata_FilterController import FilterController
 
 
-
 ###################################################
 # データ読み込み
 ###################################################
