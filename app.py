@@ -20,6 +20,38 @@ controller = FilterController(df)
 ###################################################
 st.title("SF6 フレームデータビューワー")
 
+st.header("使い方")
+
+with st.expander("📖 使い方を表示"):
+
+    st.markdown("""
+### 基本操作
+
+① キャラクターを選択します。
+
+② 必要なら操作タイプを選択します。
+
+③ 発生・ガード硬直差などで絞り込みます。
+
+④ 「検索」を押します。
+
+---
+
+### 比較検索
+
+キャラクター(比較用)を指定すると
+2キャラ同時に表示できます。
+
+---
+
+### コツ
+
+・発生「4」で4F技だけ検索できます。
+
+・硬直差「+4」は「4」と入力してください。
+""")
+
+
 st.set_page_config(
     page_title="SF6 フレームデータビューワー",
     layout="wide"
@@ -168,11 +200,6 @@ display_df = display_df.rename(columns={
 st.dataframe(
     display_df,
     width="stretch"
-        column_config={
-        "備考": st.column_config.TextColumn(
-            width="large"
-        ),
-    }
 )
 
 st.write(f"検索結果：{len(st.session_state.result)}件")
