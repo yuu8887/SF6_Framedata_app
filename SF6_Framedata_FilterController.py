@@ -55,17 +55,34 @@ class FilterController:
         if cancel != "すべて":
             result = result[result["キャンセル"] == cancel]
 
+        startup_list = []
+
         if startup is not None:
-            result = result["発生"]
-        
+                startup_list.append(startup)
+
         if startup2 is not None:
-            result = result["発生"]
+                startup_list.append(startup2)
+
+        if startup_list:
+
+            temp = result["発生"].astype(str)
+            temp = temp.str.replace(".0", "", regex=False)
+
+            result = result[temp.isin(startup_list)]
 
         if hitF is not None:
-            result = result["ヒット時硬直差"]
+
+            temp = result["ヒット時硬直差"].astype(str)
+            temp = temp.str.replace(".0", "", regex=False)
+
+            result = result[temp == hitF]
 
         if guardF is not None:
-            result = result["ガード時硬直差"]
+
+            temp = result["ガード時硬直差"].astype(str)
+            temp = temp.str.replace(".0", "", regex=False)
+
+            result = result[temp == guardF]
 
         if zokusei != "すべて":
             result = result[result["属性"] == zokusei]
@@ -125,7 +142,7 @@ class FilterController:
     def get_command2_list(self):
 
         command_list = sorted(
-            self.df["コマンド(比較用)"].dropna().unique().tolist()
+            self.df["コマンド"].dropna().unique().tolist()
         )
 
         command_list.insert(0, "指定なし")
@@ -155,10 +172,10 @@ class FilterController:
     def get_startup2_list(self):
 
         startup_list = sorted(
-            self.df["発生(数値入力)(比較用)"].dropna().astype(str).unique().tolist()
+            self.df["発生"].dropna().astype(str).unique().tolist()
         )
 
-        startup_list.insert(0, "すべて")
+        startup_list.insert(0, "指定なし")
 
         return startup_list
 
