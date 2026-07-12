@@ -131,7 +131,7 @@ with col1:
 with col2:
     clear = st.button("クリア")
 
-if st.button("検索"):
+if search:
     result = controller.filter_data(
         character1=character,
         character2=character2,
