@@ -54,6 +54,26 @@ cancel = st.selectbox(
     controller.get_cancel_list()
 )
 
+zokusei = st.selectbox(
+    "属性",
+    controller.get_zokusei_list()
+)
+
+
+startup = st.text_input(
+    "発生",
+    controller.get_startup_list()
+)
+
+hitF = st.text_input(
+    "ヒット時硬直差",
+    controller.get_hitF_list()
+)
+
+guardF = st.text_input(
+    "ガード時硬直差",
+    controller.get_guardF_list()
+)
 
 ###################################################
 # 検索ボタン
@@ -66,7 +86,10 @@ if st.button("検索"):
         movetype=movetype,
         command=command,
         cancel=cancel,
-
+        zokusei=zokusei,
+        startup=startup,
+        hitF=hitF,
+        guardF=guardF
     )
 else:
 
