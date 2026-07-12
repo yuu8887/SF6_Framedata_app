@@ -14,17 +14,25 @@ def __init__(self, filename):
         # 全列をPython標準の文字列(str)へ変換
         for col in self.df.columns:
 
-            self.df[col] = (
-                self.df[col]
-                .apply(str)
-                .str.replace(".0", "", regex=False)
-            )
+            self.df[col] = self.df[col].apply(self.convert_value)
 
         # 列名も念のためstrへ変換
         self.df.columns = [
             str(col)
             for col in self.df.columns
         ]
+
+def convert_value(self, value):
+
+    if pd.isna(value):
+        return ""
+
+    if isinstance(value, float):
+
+        if value.is_integer():
+            return str(int(value))
+
+    return str(value)
 
 
 def get_dataframe(self):
