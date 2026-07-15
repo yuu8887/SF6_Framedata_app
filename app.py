@@ -1,4 +1,22 @@
 import streamlit as st
+import streamlit.components.v1 as components
+
+components.html(
+"""
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-ZJ72KNDK75');
+</script>
+""",
+height=0,
+)
+
 
 from SF6_Framedata_ExcelDataManager import ExcelDataManager
 from SF6_Framedata_FilterController import FilterController
