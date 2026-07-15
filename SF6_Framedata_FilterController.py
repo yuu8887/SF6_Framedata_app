@@ -63,14 +63,14 @@ class FilterController:
 
         if hitF is not None:
 
-            temp = result["ヒット時硬直差"].astype(str)
+            temp = result["H硬直"].astype(str)
             temp = temp.str.replace(".0", "", regex=False)
 
             result = result[temp == hitF]
 
         if guardF is not None:
 
-            temp = result["ガード時硬直差"].astype(str)
+            temp = result["G硬直"].astype(str)
             temp = temp.str.replace(".0", "", regex=False)
 
             result = result[temp == guardF]
