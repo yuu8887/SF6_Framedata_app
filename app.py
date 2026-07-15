@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 components.html(
 """
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ72KNDK75"></script>
 
 <script>
 window.dataLayer = window.dataLayer || [];
