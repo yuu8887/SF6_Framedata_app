@@ -1,4 +1,4 @@
 streamlit
-streamlit-gtag
 pandas
 openpyxl
+streamlit-analytics2
