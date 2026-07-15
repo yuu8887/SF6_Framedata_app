@@ -1,29 +1,27 @@
 import streamlit as st
-import streamlit.components.v1 as components
+from streamlit_gtag import st_gtag
 
 st.set_page_config(
     page_title="SF6 フレームデータビューワー",
     layout="wide"
 )
 
-components.html(
-"""
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ72KNDK75"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-ZJ72KNDK75');
-</script>
-""",
-height=0,
+st_gtag(
+    key="gtag",
+    id="G-ZJ72KNDK75",
+    event_name="page_view",
+    params={
+        "event_category": "navigation",
+        "event_label": "home",
+        "value": 1,
+    },
 )
 
 from SF6_Framedata_ExcelDataManager import ExcelDataManager
 from SF6_Framedata_FilterController import FilterController
+from streamlit_gtag import st_gtag
+
+
 
 ###################################################
 # データ読み込み
