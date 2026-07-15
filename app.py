@@ -19,9 +19,6 @@ st_gtag(
 
 from SF6_Framedata_ExcelDataManager import ExcelDataManager
 from SF6_Framedata_FilterController import FilterController
-from streamlit_gtag import st_gtag
-
-
 
 ###################################################
 # データ読み込み
