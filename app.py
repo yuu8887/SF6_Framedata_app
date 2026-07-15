@@ -1,6 +1,11 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
+st.set_page_config(
+    page_title="SF6 フレームデータビューワー",
+    layout="wide"
+)
+
 components.html(
 """
 <!-- Google tag (gtag.js) -->
@@ -17,11 +22,8 @@ gtag('config', 'G-ZJ72KNDK75');
 height=0,
 )
 
-
 from SF6_Framedata_ExcelDataManager import ExcelDataManager
 from SF6_Framedata_FilterController import FilterController
-
-
 
 ###################################################
 # データ読み込み
@@ -87,12 +89,6 @@ with st.expander("📖 使い方を表示"):
                 
 ・誤記などは修正したいと思いますが、機能追加については基本的に対応不可となります。
 """)
-
-
-st.set_page_config(
-    page_title="SF6 フレームデータビューワー",
-    layout="wide"
-)
 
 ###################################################
 # キャラクター選択
